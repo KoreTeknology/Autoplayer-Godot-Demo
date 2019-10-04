@@ -1,0 +1,34 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=1]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=2]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectPanner" id=3]
+resource_name = "Panner"
+
+[sub_resource type="AudioEffectEQ6" id=4]
+resource_name = "EQ6"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=5]
+resource_name = "SpectrumAnalyzer"
+
+[resource]
+bus/0/effect/0/effect = SubResource( 1 )
+bus/0/effect/0/enabled = true
+bus/1/name = "track"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 2 )
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource( 3 )
+bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource( 4 )
+bus/1/effect/2/enabled = true
+bus/1/effect/3/effect = SubResource( 5 )
+bus/1/effect/3/enabled = true

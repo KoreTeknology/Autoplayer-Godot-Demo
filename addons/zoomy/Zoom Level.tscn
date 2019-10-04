@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/zoomy/Zoom Level.gd" type="Script" id=1]
+[ext_resource path="res://addons/zoomy/icon_cible.png" type="Texture" id=2]
+[ext_resource path="res://addons/zoomy/zoom-in-icon.png" type="Texture" id=3]
+
+[node name="Status Bar" type="HBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+hint_tooltip = "Zoom Level"
+mouse_filter = 2
+size_flags_vertical = 4
+custom_constants/separation = 0
+alignment = 1
+script = ExtResource( 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 392.0
+margin_right = 408.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+margin_left = 408.0
+margin_top = 1.0
+margin_right = 506.0
+margin_bottom = 15.0
+text = "2D Coordinates"
+
+[node name="posSnap" type="Label" parent="."]
+margin_left = 506.0
+margin_right = 538.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 0 )
+mouse_filter = 0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="pos" type="Label" parent="posSnap"]
+margin_right = 28.0
+margin_bottom = 16.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 0.698039, 0.0588235, 1 )
+text = "(0,0)"
+clip_text = true
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="posSnap"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Spacer" type="Control" parent="."]
+margin_left = 538.0
+margin_right = 542.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 4, 16 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+editor/display_folded = true
+margin_left = 542.0
+margin_right = 558.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 558.0
+margin_top = 1.0
+margin_right = 595.0
+margin_bottom = 15.0
+text = "Zoom"
+
+[node name="ZSnap" type="Label" parent="."]
+editor/display_folded = true
+margin_left = 595.0
+margin_top = 1.0
+margin_right = 631.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 36, 0 )
+
+[node name="Z" type="Label" parent="ZSnap"]
+margin_right = 36.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 0.698039, 0.0588235, 1 )
+text = "100%"
+clip_text = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ZSnap/Z"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0

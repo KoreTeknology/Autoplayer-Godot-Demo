@@ -1,0 +1,751 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://images/plate.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Plate.gd" type="Script" id=2]
+[ext_resource path="res://images/scale.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Knob1.gd" type="Script" id=4]
+[ext_resource path="res://images/knob_bottom.png" type="Texture" id=5]
+[ext_resource path="res://images/knob_top.png" type="Texture" id=6]
+[ext_resource path="res://scripts/knob.gd" type="Script" id=7]
+[ext_resource path="res://scripts/panknob.gd" type="Script" id=8]
+[ext_resource path="res://images/knob_pan_bottom.png" type="Texture" id=9]
+[ext_resource path="res://images/knob_pan_top.png" type="Texture" id=10]
+[ext_resource path="res://scripts/top.gd" type="Script" id=11]
+[ext_resource path="res://resources/but_hov.tres" type="StyleBox" id=12]
+[ext_resource path="res://resources/but_prs.tres" type="StyleBox" id=13]
+[ext_resource path="res://resources/but_nor.tres" type="StyleBox" id=14]
+[ext_resource path="res://scripts/Spectrum.gd" type="Script" id=15]
+[ext_resource path="res://scripts/Spectrumblue.gd" type="Script" id=16]
+[ext_resource path="res://scripts/Spectrumpurple.gd" type="Script" id=17]
+[ext_resource path="res://scripts/Spectrum4.gd" type="Script" id=18]
+[ext_resource path="res://scripts/Spectrum2.gd" type="Script" id=19]
+[ext_resource path="res://scripts/Spectrum3.gd" type="Script" id=20]
+[ext_resource path="res://scripts/FullSpectrum.gd" type="Script" id=21]
+[ext_resource path="res://scripts/Scope.gd" type="Script" id=22]
+[ext_resource path="res://scripts/EQSlisers.gd" type="Script" id=23]
+[ext_resource path="res://images/slider.png" type="Texture" id=24]
+[ext_resource path="res://resources/lcd_font12.tres" type="DynamicFont" id=25]
+[ext_resource path="res://scripts/Latency.gd" type="Script" id=26]
+[ext_resource path="res://scripts/MuteButton.gd" type="Script" id=27]
+[ext_resource path="res://scripts/FadeOutAnimation.gd" type="Script" id=28]
+[ext_resource path="res://audiofiles/loop_150bpm.wav" type="AudioStream" id=29]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 102.255, 104.383 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 105.333, 104.15 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 57.4673, 54.0784 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.141176, 0.145098, 0.152941, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_color = Color( 0.447059, 0.439216, 0.439216, 1 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 13.5179, 107.678 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 128.677, 25.1475 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 53, 10 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.611765, 0.603922, 0.592157, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 2,
+"values": [  ]
+}
+
+[node name="Node" type="Node"]
+
+[node name="Plate" type="Sprite" parent="."]
+position = Vector2( 149.851, 299.8 )
+scale = Vector2( 0.99801, 1 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 255.96, 188.135 )
+texture = ExtResource( 3 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 228.96, 188.135 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 505.563, 297.669 )
+rotation = 0.00698132
+audio_bus_override = true
+audio_bus_name = "track"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+position = Vector2( -5.6499, -9.03918 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Area2D"]
+margin_left = -6.58677
+margin_top = 98.8665
+margin_right = 1.41323
+margin_bottom = 129.867
+text = "0"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="knobtop" type="Sprite" parent="Area2D"]
+visible = false
+position = Vector2( -5.08765, -8.44598 )
+texture = ExtResource( 6 )
+
+[node name="knob" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 83.9054, 135.793 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Cap" type="Sprite" parent="knob"]
+texture = ExtResource( 5 )
+
+[node name="bg" type="Sprite" parent="knob"]
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="knob"]
+margin_left = -131.753
+margin_top = 93.2359
+margin_right = -91.753
+margin_bottom = 107.236
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-80db"
+align = 1
+
+[node name="Label2" type="Label" parent="knob"]
+margin_left = 88.9398
+margin_top = 93.0064
+margin_right = 129.94
+margin_bottom = 107.006
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0 db"
+align = 1
+
+[node name="Label3" type="Label" parent="knob"]
+margin_left = -103.034
+margin_top = -134.895
+margin_right = -62.0338
+margin_bottom = -120.895
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+
+[node name="Label4" type="Label" parent="knob"]
+margin_left = 60.9662
+margin_top = -134.895
+margin_right = 101.966
+margin_bottom = -120.895
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-80 db"
+align = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="knob"]
+margin_left = -103.0
+margin_top = -160.0
+margin_right = 103.0
+margin_bottom = -140.0
+percent_visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knob"]
+show_behind_parent = true
+shape = SubResource( 2 )
+
+[node name="panknob" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 85.1454, 264.581 )
+scale = Vector2( 0.5, 0.5 )
+audio_bus_name = "track"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="panknob"]
+show_behind_parent = true
+shape = SubResource( 3 )
+
+[node name="bg" type="Sprite" parent="panknob"]
+texture = ExtResource( 9 )
+
+[node name="top" type="Sprite" parent="panknob"]
+rotation = 2.35619
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="panknob"]
+margin_left = -76.5636
+margin_top = 56.2009
+margin_right = -36.5636
+margin_bottom = 70.2009
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Left"
+
+[node name="Label2" type="Label" parent="panknob"]
+margin_left = 50.4994
+margin_top = 56.2009
+margin_right = 90.4994
+margin_bottom = 70.2009
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "right"
+
+[node name="Label3" type="Label" parent="panknob"]
+margin_left = -19.7337
+margin_top = -93.4827
+margin_right = 22.2663
+margin_bottom = -79.4827
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Center"
+
+[node name="ResetPanButton" type="Button" parent="panknob"]
+margin_left = -33.9259
+margin_top = 102.127
+margin_right = 14.0741
+margin_bottom = 122.127
+rect_scale = Vector2( 1.4, 1.4 )
+hint_tooltip = "Reset Pan"
+focus_mode = 0
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 14 )
+enabled_focus_mode = 0
+text = "Reset"
+
+[node name="Meter" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 251.662, 65.0556 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Panel" type="Panel" parent="Meter"]
+margin_left = 2.0
+margin_top = 19.0
+margin_right = 21.0
+margin_bottom = 228.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Panel2" type="Panel" parent="Meter"]
+margin_left = -24.9602
+margin_top = 18.7489
+margin_right = -5.96016
+margin_bottom = 227.749
+custom_styles/panel = SubResource( 4 )
+
+[node name="Panel3" type="Panel" parent="Meter"]
+margin_left = -59.0881
+margin_top = 18.7489
+margin_right = -40.0881
+margin_bottom = 227.749
+custom_styles/panel = SubResource( 4 )
+
+[node name="Spectrum" type="Node2D" parent="Meter"]
+position = Vector2( -2.54379, -14.8325 )
+script = ExtResource( 15 )
+
+[node name="Spectrumblue" type="Node2D" parent="Meter"]
+position = Vector2( -62.2861, -14.8325 )
+script = ExtResource( 16 )
+
+[node name="Spectrumpurple" type="Node2D" parent="Meter"]
+position = Vector2( -62.286, 32.167 )
+script = ExtResource( 17 )
+
+[node name="Redmeter" type="Node2D" parent="Meter"]
+position = Vector2( -28.429, -15.0836 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 18 )
+
+[node name="Orangemeter" type="Node2D" parent="Meter"]
+position = Vector2( -28.4292, 24.9159 )
+z_index = 2
+z_as_relative = false
+script = ExtResource( 19 )
+
+[node name="Greenmeter" type="Node2D" parent="Meter"]
+position = Vector2( -28.4292, 84.9159 )
+z_index = 3
+z_as_relative = false
+script = ExtResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meter"]
+show_behind_parent = true
+position = Vector2( 11.2554, 122.45 )
+shape = SubResource( 5 )
+
+[node name="LargeSpectrum" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 130.095, 73.8596 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Panel2" type="Panel" parent="LargeSpectrum"]
+visible = false
+margin_left = -95.0
+margin_top = 276.0
+margin_right = 154.0
+margin_bottom = 317.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="FullSpectrum" type="Node2D" parent="LargeSpectrum"]
+position = Vector2( -102.771, 293.19 )
+script = ExtResource( 21 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LargeSpectrum"]
+visible = false
+show_behind_parent = true
+position = Vector2( 29.2414, 296.319 )
+shape = SubResource( 6 )
+
+[node name="Scope" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 53, 335 )
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scope"]
+position = Vector2( 78, -2 )
+shape = SubResource( 7 )
+
+[node name="Line2D" type="Line2D" parent="Scope"]
+points = PoolVector2Array( 142.732, 0.129944, -1.13249, 0.129944 )
+width = 1.0
+texture_mode = 1049186290
+
+[node name="Control" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 60.7553
+margin_top = 190.646
+margin_right = 109.755
+margin_bottom = 204.646
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Volume"
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 61.4536
+margin_top = 300.416
+margin_right = 110.454
+margin_bottom = 314.416
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pan"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+editor/display_folded = true
+visible = false
+margin_left = 307.32
+margin_top = 388.162
+margin_right = 404.32
+margin_bottom = 552.162
+custom_constants/separation = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 17.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 44.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 44.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label4" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 44.0
+margin_bottom = 89.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label5" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 99.0
+margin_right = 44.0
+margin_bottom = 113.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label6" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 123.0
+margin_right = 44.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="Label7" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 147.0
+margin_right = 44.0
+margin_bottom = 161.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "f1"
+align = 2
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer"]
+margin_left = 53.0
+margin_right = 97.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_right = 44.0
+margin_bottom = 20.0
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 24.0
+margin_right = 44.0
+margin_bottom = 44.0
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 44.0
+margin_bottom = 68.0
+
+[node name="Button4" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 72.0
+margin_right = 44.0
+margin_bottom = 92.0
+
+[node name="Button5" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 96.0
+margin_right = 44.0
+margin_bottom = 116.0
+
+[node name="Button6" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 120.0
+margin_right = 44.0
+margin_bottom = 140.0
+
+[node name="Button7" type="Button" parent="Control/HBoxContainer/VBoxContainer2"]
+margin_top = 144.0
+margin_right = 44.0
+margin_bottom = 164.0
+
+[node name="6BandsEQLabel" type="Label" parent="Control"]
+margin_left = 18.0
+margin_top = 346.0
+margin_right = 283.0
+margin_bottom = 360.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6 Bands Equalizer"
+align = 1
+
+[node name="InputGainLabel" type="Label" parent="Control"]
+margin_left = 210.035
+margin_top = 322.137
+margin_right = 284.035
+margin_bottom = 336.137
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stereo Gain"
+align = 1
+
+[node name="ResetEqButton" type="Button" parent="Control"]
+margin_left = 229.732
+margin_top = 344.683
+margin_right = 299.732
+margin_bottom = 364.683
+rect_min_size = Vector2( 0.5, 0.5 )
+rect_scale = Vector2( 0.7, 0.7 )
+hint_tooltip = "Reset EQ"
+focus_mode = 0
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 14 )
+enabled_focus_mode = 0
+text = "Reset EQ"
+
+[node name="EQSlisers" type="HBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 19.0
+margin_top = 402.0
+margin_right = 283.0
+margin_bottom = 530.0
+custom_constants/separation = 28
+alignment = 1
+script = ExtResource( 23 )
+
+[node name="HSlider" type="VSlider" parent="EQSlisers"]
+margin_left = 14.0
+margin_right = 30.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HSlider2" type="VSlider" parent="EQSlisers"]
+margin_left = 58.0
+margin_right = 74.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HSlider3" type="VSlider" parent="EQSlisers"]
+margin_left = 102.0
+margin_right = 118.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HSlider4" type="VSlider" parent="EQSlisers"]
+margin_left = 146.0
+margin_right = 162.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HSlider5" type="VSlider" parent="EQSlisers"]
+margin_left = 190.0
+margin_right = 206.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HSlider6" type="VSlider" parent="EQSlisers"]
+margin_left = 234.0
+margin_right = 250.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 24 )
+min_value = -60.0
+max_value = 24.0
+value = -18.0
+ticks_on_borders = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 18.0
+margin_top = 532.0
+margin_right = 393.0
+margin_bottom = 572.0
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_top = 13.0
+margin_right = 59.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "32Hz"
+align = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+margin_left = 63.0
+margin_top = 13.0
+margin_right = 122.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100Hz"
+align = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+margin_left = 126.0
+margin_top = 13.0
+margin_right = 185.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "320Hz"
+align = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer2"]
+margin_left = 189.0
+margin_top = 13.0
+margin_right = 248.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1KHz"
+align = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer2"]
+margin_left = 252.0
+margin_top = 13.0
+margin_right = 311.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3.2KHz"
+align = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer2"]
+margin_left = 315.0
+margin_top = 13.0
+margin_right = 375.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10KHz"
+align = 1
+
+[node name="LatencyPanel" type="Panel" parent="."]
+margin_left = 239.0
+margin_top = 56.0
+margin_right = 275.0
+margin_bottom = 72.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="MarginContainer" type="MarginContainer" parent="LatencyPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="Latency" type="Label" parent="LatencyPanel/MarginContainer"]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 36.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 25 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0.000"
+valign = 1
+script = ExtResource( 26 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 183.0
+margin_top = 57.0
+margin_right = 270.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Latency:"
+valign = 1
+
+[node name="MuteButton" type="Button" parent="."]
+margin_left = 191.0
+margin_top = 298.0
+margin_right = 278.0
+margin_bottom = 318.0
+focus_mode = 0
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 14 )
+toggle_mode = true
+enabled_focus_mode = 0
+text = "Mute Audio"
+script = ExtResource( 27 )
+
+[node name="FadeOutAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+"anims/Nouvelle animation" = SubResource( 9 )
+script = ExtResource( 28 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+volume_db = -80.0
+autoplay = true
+bus = "track"
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_Knob1_input_event"]
+[connection signal="input_event" from="knob" to="knob" method="_on_knob_input_event"]
+[connection signal="input_event" from="panknob" to="panknob" method="_on_panknob_input_event"]
+[connection signal="pressed" from="panknob/ResetPanButton" to="panknob/top" method="_on_ResetPanButton_pressed"]
+[connection signal="pressed" from="Control/ResetEqButton" to="EQSlisers" method="_on_ResetEqButton_pressed"]
+[connection signal="value_changed" from="EQSlisers/HSlider" to="EQSlisers" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="EQSlisers/HSlider2" to="EQSlisers" method="_on_HSlider2_value_changed"]
+[connection signal="value_changed" from="EQSlisers/HSlider3" to="EQSlisers" method="_on_HSlider3_value_changed"]
+[connection signal="value_changed" from="EQSlisers/HSlider4" to="EQSlisers" method="_on_HSlider4_value_changed"]
+[connection signal="value_changed" from="EQSlisers/HSlider5" to="EQSlisers" method="_on_HSlider5_value_changed"]
+[connection signal="value_changed" from="EQSlisers/HSlider6" to="EQSlisers" method="_on_HSlider6_value_changed"]
+[connection signal="toggled" from="MuteButton" to="MuteButton" method="_on_MuteButton_toggled"]
