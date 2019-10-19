@@ -3,6 +3,7 @@ An Audio player with controls, EQ, Pan, VuMeters Mute and more...
 
 <img src="https://github.com/KoreTeknology/Autoplayer-Godot-Demo/blob/master/doc/0002.png" width=100%>
 
+<img src="https://github.com/KoreTeknology/Autoplayer-Godot-Demo/blob/master/doc/003.png" width=100%>
 
 <img src="https://github.com/KoreTeknology/Autoplayer-Godot-Demo/blob/master/doc/0004.png" width=100%>
 
